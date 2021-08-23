@@ -22,5 +22,11 @@
         width: 100%;
         height: 100%;
         border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        font-family: 'Rampart One', sans-serif;
+        cursor: pointer;
     }
 }
