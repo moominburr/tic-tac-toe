@@ -30,9 +30,8 @@ const Player = (name, sign) => {
 
 const playerX = Player("Kate", "X");
 
-const squares = document.querySelectorAll(".square-text");
-
 const initializeGame = (() => {
+  const squares = document.querySelectorAll(".square-text");
   let winningArray = [];
   let winner = null;
   let isDraw = false;
@@ -77,7 +76,6 @@ const initializeGame = (() => {
       } else {
         return false;
       }
-      
     };
     const checkVerticals = () => {
       let v1 = false;
@@ -139,17 +137,25 @@ const initializeGame = (() => {
       let cv = checkVerticals();
       let cd = checkDiagonals();
       if (cd || cv || ch) {
-          console.log('TRUE')
+        console.log("TRUE");
         return true;
       }
     };
     return { overall };
   })();
+
   const endGame = () => {
-      const popUp = document.querySelector('.end-game-pop-up');
-      popUp.classList.add('pop-up-active');
-      
-  }
+    winningArray.forEach((el) => {
+      squares[el].classList.add("winner");
+    });
+    squares.forEach((el) => {
+      el.addEventListener("animationend", () => {
+        const popUp = document.querySelector(".end-game-pop-up");
+        popUp.classList.add("pop-up-active");
+      });
+    });
+  };
+
   const playRound = (e, player) => {
     let isWinner = false;
     let iteration = 1;
