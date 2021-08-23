@@ -180,6 +180,7 @@ const initializeGame = (() => {
         squares[ct].textContent = "O";
         iteration++;
         isWinner = checkWinningConditions.overall();
+        if(isWinner) endGame();
       }
     }
   };
