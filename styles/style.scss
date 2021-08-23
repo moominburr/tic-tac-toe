@@ -6,6 +6,7 @@
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -18,6 +19,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
+    position: relative;
     .gamesquare {
         width: 100%;
         height: 100%;
@@ -36,6 +38,32 @@
             align-items: center;
         }
         
+    }
+}
+
+.end-game-pop-up {
+    position: absolute;
+    transition: all 0.5s ease;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    background-color: rgba(0, 0, 0, 0.26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0);
+}
+.pop-up-active {
+    transform: scale(1);
+    top: 0;
+    left:0;
+    .reset-btn {
+        padding: 1em 2em;
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 15px;
     }
 }
 .winner {
