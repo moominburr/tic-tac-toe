@@ -105,6 +105,8 @@
   border: 1px solid black;
   cursor: pointer;
   border-radius: 15px;
+  background-color: white;
+  font-size: 2em;
 }
 
 .winner {

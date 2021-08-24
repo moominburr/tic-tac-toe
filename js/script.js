@@ -145,13 +145,25 @@ const initializeGame = (() => {
   })();
 
   const endGame = () => {
+    const popUp = document.querySelector(".end-game-pop-up");
     winningArray.forEach((el) => {
       squares[el].classList.add("winner");
     });
+    const resetGame = () => {
+      Gameboard.resetGamearray();
+      popUp.classList.remove("pop-up-active");
+        for(i=0; i < 8; i++){
+            squares[i].textContent = ''
+            if(squares[i].classList.contains('winner')){
+                squares[i].classList.remove('winner');
+            }
+        }
+    }
     squares.forEach((el) => {
       el.addEventListener("animationend", () => {
-        const popUp = document.querySelector(".end-game-pop-up");
         popUp.classList.add("pop-up-active");
+        const resetBtn = document.querySelector(".reset-btn");
+        resetBtn.addEventListener("click", resetGame);
       });
     });
   };
@@ -180,7 +192,7 @@ const initializeGame = (() => {
         squares[ct].textContent = "O";
         iteration++;
         isWinner = checkWinningConditions.overall();
-        if(isWinner) endGame();
+        if (isWinner) endGame();
       }
     }
   };
