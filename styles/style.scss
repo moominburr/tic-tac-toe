@@ -1,94 +1,186 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rampart One", sans-serif;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1em;
+  h1 {
+    .ha1 {
+      animation: headingAnim 4s linear infinite;
+    }
+    .ha2 {
+      animation: headingAnim 4s linear -0.5s infinite;
+    }
+    .ha3 {
+      animation: headingAnim 4s linear -1s infinite;
+    }
+    .ha4 {
+      animation: headingAnim 4s linear -1.5s infinite;
+    }
+    .ha5 {
+      animation: headingAnim 4s linear -2s infinite;
+    }
+    .ha6 {
+      animation: headingAnim 4s linear -2.5s infinite;
+    }
+    .ha7 {
+      animation: headingAnim 4s linear -3s infinite;
+    }
+    .ha8 {
+      animation: headingAnim 4s linear -3.5s infinite;
+    }
+    .ha9 {
+      animation: headingAnim 4s linear -4s infinite;
+    }
+  }
 }
 
 .gameboard {
-    height: 500px;
-    width: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    position: relative;
-    .gamesquare {
-        width: 100%;
-        height: 100%;
-        border: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3em;
-        font-family: 'Rampart One', sans-serif;
-        cursor: pointer;
-        p {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-    }
-}
-
-.end-game-pop-up {
-    position: absolute;
-    transition: all 0.5s ease;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: -100%;
-    background-color: rgba(0, 0, 0, 0.733);
+  height: 500px;
+  width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  position: relative;
+  .gamesquare {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    transform: scale(0);
+    font-size: 3em;
+    font-family: "Rampart One", sans-serif;
+    cursor: pointer;
+    p {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.end-game-pop-up {
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: -100%;
+  background-color: rgba(255, 255, 255, 0.733);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: scale(0);
 }
 .pop-up-active {
-    transform: scale(1);
-    top: 0;
-    left:0;
-    .reset-btn {
-        padding: 1em 2em;
-        border: 1px solid black;
-        cursor: pointer;
-        border-radius: 15px;
-        background-color: white;
-        font-size: 2em;
-    }
+  transform: scale(1);
+  top: 0;
+  left: 0;
+  h2 {
+      font-size: 3em;
+      padding-bottom: 2em;
+      animation: popUp 4s linear infinite;
+  }
+  .reset-btn {
+    padding: 1em 2em;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: black;
+    font-size: 2em;
+    color: white;
+  }
 }
 .winner {
-    color: green;
-    animation: winning 2s forwards;
+  color: green;
+  animation: winning 2s forwards;
 }
 @keyframes winning {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.5);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.5);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+@keyframes headingAnim {
+  0% {
+    color: red;
+  }
+  10% {
+    color: hotpink;
+  }
+  20% {
+    color: coral;
+  }
+  30% {
+    color: orange;
+  }
+  40% {
+    color: rgb(228, 214, 18);
+  }
+  50% {
+    color: lime;
+  }
+  60% {
+    color: turquoise;
+  }
+  70% {
+    color: rgb(0, 132, 255);
+  }
+  80% {
+    color: rgb(81, 0, 128);
+  }
+  90% {
+    color: rgb(128, 0, 107);
+  }
+  100% {
+    color: red;
+  }
+}
+@keyframes popUp {
     0% {
-        transform: scale(1);
+        color: hotpink;
     }
-    20% {
-        transform: scale(1.5);
+    25% {
+        color: coral;
     }
-    40% {
-        transform: scale(1);
+    50% {
+        color: orange;
     }
-    60% {
-        transform: scale(1.5);
-    }
-    80% {
-        transform: scale(1);
+    75% {
+        color: coral;
     }
     100% {
-        transform: scale(1.5);
+        color: hotpink;
     }
 }

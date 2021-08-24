@@ -3,6 +3,7 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: "Rampart One", sans-serif;
 }
 
 .container {
@@ -21,6 +22,64 @@
           align-items: center;
   height: 100vh;
   width: 100vw;
+}
+
+.heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 1em;
+}
+
+.heading h1 .ha1 {
+  -webkit-animation: headingAnim 4s linear infinite;
+          animation: headingAnim 4s linear infinite;
+}
+
+.heading h1 .ha2 {
+  -webkit-animation: headingAnim 4s linear -0.5s infinite;
+          animation: headingAnim 4s linear -0.5s infinite;
+}
+
+.heading h1 .ha3 {
+  -webkit-animation: headingAnim 4s linear -1s infinite;
+          animation: headingAnim 4s linear -1s infinite;
+}
+
+.heading h1 .ha4 {
+  -webkit-animation: headingAnim 4s linear -1.5s infinite;
+          animation: headingAnim 4s linear -1.5s infinite;
+}
+
+.heading h1 .ha5 {
+  -webkit-animation: headingAnim 4s linear -2s infinite;
+          animation: headingAnim 4s linear -2s infinite;
+}
+
+.heading h1 .ha6 {
+  -webkit-animation: headingAnim 4s linear -2.5s infinite;
+          animation: headingAnim 4s linear -2.5s infinite;
+}
+
+.heading h1 .ha7 {
+  -webkit-animation: headingAnim 4s linear -3s infinite;
+          animation: headingAnim 4s linear -3s infinite;
+}
+
+.heading h1 .ha8 {
+  -webkit-animation: headingAnim 4s linear -3.5s infinite;
+          animation: headingAnim 4s linear -3.5s infinite;
+}
+
+.heading h1 .ha9 {
+  -webkit-animation: headingAnim 4s linear -4s infinite;
+          animation: headingAnim 4s linear -4s infinite;
 }
 
 .gameboard {
@@ -49,7 +108,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 3em;
-  font-family: 'Rampart One', sans-serif;
+  font-family: "Rampart One", sans-serif;
   cursor: pointer;
 }
 
@@ -75,7 +134,7 @@
   height: 100vh;
   top: 0;
   left: -100%;
-  background-color: rgba(0, 0, 0, 0.733);
+  background-color: rgba(255, 255, 255, 0.733);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,13 +159,20 @@
   left: 0;
 }
 
+.pop-up-active h2 {
+  font-size: 3em;
+  padding-bottom: 2em;
+  -webkit-animation: popUp 4s linear infinite;
+          animation: popUp 4s linear infinite;
+}
+
 .pop-up-active .reset-btn {
   padding: 1em 2em;
-  border: 1px solid black;
   cursor: pointer;
   border-radius: 15px;
-  background-color: white;
+  background-color: black;
   font-size: 2em;
+  color: white;
 }
 
 .winner {
@@ -166,6 +232,114 @@
   100% {
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
+  }
+}
+
+@-webkit-keyframes headingAnim {
+  0% {
+    color: red;
+  }
+  10% {
+    color: hotpink;
+  }
+  20% {
+    color: coral;
+  }
+  30% {
+    color: orange;
+  }
+  40% {
+    color: #e4d612;
+  }
+  50% {
+    color: lime;
+  }
+  60% {
+    color: turquoise;
+  }
+  70% {
+    color: #0084ff;
+  }
+  80% {
+    color: #510080;
+  }
+  90% {
+    color: #80006b;
+  }
+  100% {
+    color: red;
+  }
+}
+
+@keyframes headingAnim {
+  0% {
+    color: red;
+  }
+  10% {
+    color: hotpink;
+  }
+  20% {
+    color: coral;
+  }
+  30% {
+    color: orange;
+  }
+  40% {
+    color: #e4d612;
+  }
+  50% {
+    color: lime;
+  }
+  60% {
+    color: turquoise;
+  }
+  70% {
+    color: #0084ff;
+  }
+  80% {
+    color: #510080;
+  }
+  90% {
+    color: #80006b;
+  }
+  100% {
+    color: red;
+  }
+}
+
+@-webkit-keyframes popUp {
+  0% {
+    color: hotpink;
+  }
+  25% {
+    color: coral;
+  }
+  50% {
+    color: orange;
+  }
+  75% {
+    color: coral;
+  }
+  100% {
+    color: hotpink;
+  }
+}
+
+@keyframes popUp {
+  0% {
+    color: hotpink;
+  }
+  25% {
+    color: coral;
+  }
+  50% {
+    color: orange;
+  }
+  75% {
+    color: coral;
+  }
+  100% {
+    color: hotpink;
   }
 }
 /*# sourceMappingURL=style.css.map */

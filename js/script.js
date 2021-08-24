@@ -219,6 +219,11 @@ const initializeGame = (() => {
         resetBtn.addEventListener("click", resetGame);
       });
     });
+    if(isDraw){
+        popUp.classList.add("pop-up-active");
+        const resetBtn = document.querySelector(".reset-btn");
+        resetBtn.addEventListener("click", resetGame);
+    }
   };
 
   const playRound = (e, player) => {
