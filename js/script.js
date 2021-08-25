@@ -28,9 +28,36 @@ const Player = (name, sign) => {
 };
 // Create a gameboard with event listeners that update the array with the players sign.
 
-const playerX = Player("Kate", "X");
+//const playerX = Player("Kate", "X");
+const player = (() => {
+  let name = document.querySelector("#name").value || "player";
+  const signBtns = document.querySelectorAll(".selector");
+  let sign = "X";
+  const selectSign = (e) => {
+    sign = e.target.textContent;
+    e.target.classList.add("active-selector");
+  };
+  signBtns.forEach((btn) => {
+    btn.addEventListener("click", selectSign);
+  });
+  let player1 = Player(name, sign);
+  const updateName = () => {
+    name = document.querySelector("#name").value;
+    if (name) {
+        player1 = Player(name, sign);
+    } 
+  };
+  return { player1, updateName };
+})();
 
 const initializeGame = (() => {
+  const startBtn = document.querySelector(".start-btn");
+  startBtn.addEventListener("click", () => {
+    player.updateName();
+    const startPopUp = document.querySelector(".start-game-pop-up");
+    startPopUp.classList.add("pop-up-not-active");
+    console.log(player.player1.getName());
+  });
   const squares = document.querySelectorAll(".square-text");
   let iteration = 1;
   let winningArray = [];
@@ -39,7 +66,7 @@ const initializeGame = (() => {
   let isDraw = false;
   squares.forEach((square) =>
     square.addEventListener("click", (e) => {
-      playRound(e, playerX);
+      playRound(e, player.player1);
     })
   );
   const compTurn = () => {
@@ -178,25 +205,25 @@ const initializeGame = (() => {
       });
     }
     if (xCount === oCount && xCount !== 0) {
-        return true;
-      } else {
-          return false;
-      }
+      return true;
+    } else {
+      return false;
+    }
   };
   const endGame = () => {
     iteration = 1;
     const popUp = document.querySelector(".end-game-pop-up");
-    const winningText = document.querySelector('.winning-text');
+    const winningText = document.querySelector(".winning-text");
     console.log(`Winner is ${winner}, isWinner is ${isWinner}, isDraw is ${isDraw}`);
     winningArray.forEach((el) => {
       squares[el].classList.add("winner");
     });
-    if(!winner && !isDraw){
-        winningText.textContent = 'No winners here! Try again.'
-    } else if(winner && !isDraw){
-        winningText.textContent = `The winner is ${winner}.`;
-    } else if (isDraw){
-        winningText.textContent = 'A draw. Try again.'
+    if (!winner && !isDraw) {
+      winningText.textContent = "No winners here! Try again.";
+    } else if (winner && !isDraw) {
+      winningText.textContent = `The winner is ${winner}.`;
+    } else if (isDraw) {
+      winningText.textContent = "A draw. Try again.";
     }
     const resetGame = () => {
       popUp.classList.remove("pop-up-active");
@@ -219,28 +246,29 @@ const initializeGame = (() => {
         resetBtn.addEventListener("click", resetGame);
       });
     });
-    if(isDraw){
-        popUp.classList.add("pop-up-active");
-        const resetBtn = document.querySelector(".reset-btn");
-        resetBtn.addEventListener("click", resetGame);
+    if (isDraw) {
+      popUp.classList.add("pop-up-active");
+      const resetBtn = document.querySelector(".reset-btn");
+      resetBtn.addEventListener("click", resetGame);
     }
   };
 
   const playRound = (e, player) => {
     if (iteration === 9) {
-        let index = e.target.id;
-        let array = Gameboard.getGamearray();
-        let sign = player.getSign();
-        if (array[index] !== "") {
-          return;
-        } else {
-          Gameboard.setGameArray(index, sign);
-          e.target.textContent = sign;
-          console.log(Gameboard.getGamearray());
-        }
-        isWinner = checkWinningConditions.overall();
-        if(!isWinner) isDraw = true;
-        if(isDraw || isWinner)endGame();
+      let index = e.target.id;
+      let array = Gameboard.getGamearray();
+      let sign = player.getSign();
+
+      if (array[index] !== "") {
+        return;
+      } else {
+        Gameboard.setGameArray(index, sign);
+        e.target.textContent = sign;
+        console.log(Gameboard.getGamearray());
+      }
+      isWinner = checkWinningConditions.overall();
+      if (!isWinner) isDraw = true;
+      if (isDraw || isWinner) endGame();
     }
     while (!isWinner) {
       if (iteration % 2 !== 0) {

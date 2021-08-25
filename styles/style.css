@@ -128,6 +128,114 @@
   margin: 0;
 }
 
+.start-game-pop-up {
+  position: absolute;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.945);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  transition: all 0.3s ease;
+}
+
+.start-game-pop-up .start {
+  font-size: 3em;
+  padding-bottom: 1em;
+  -webkit-animation: headingAnim 10s linear infinite;
+          animation: headingAnim 10s linear infinite;
+}
+
+.start-game-pop-up input {
+  width: 300px;
+  line-height: 20px;
+}
+
+.start-game-pop-up label {
+  font-size: 1.5em;
+}
+
+.start-game-pop-up .selectors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 3em;
+}
+
+.start-game-pop-up .selectors .x-btn, .start-game-pop-up .selectors .o-btn {
+  padding: 0em 1em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.start-game-pop-up .selectors .x-btn:hover, .start-game-pop-up .selectors .o-btn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.start-game-pop-up p {
+  font-size: 1.5em;
+}
+
+.start-game-pop-up .start-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2em;
+  font-size: 2em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.start-game-pop-up .start-btn i {
+  -webkit-animation: headingAnim 10s linear infinite;
+          animation: headingAnim 10s linear infinite;
+}
+
+.start-game-pop-up .start-btn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.pop-up-not-active {
+  left: -100%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.active-selector {
+  color: green;
+}
+
 .end-game-pop-up {
   position: absolute;
   -webkit-transition: all 0.5s ease;

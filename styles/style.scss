@@ -13,6 +13,8 @@
   height: 100vh;
   width: 100vw;
 }
+
+
 .heading {
   display: flex;
   justify-content: center;
@@ -77,7 +79,71 @@
     }
   }
 }
-
+.start-game-pop-up {
+    position: absolute;
+    transition: all 0.3s ease;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color:rgba(255, 255, 255, 0.945) ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    .start {
+        font-size: 3em;
+        padding-bottom: 1em;
+        animation: headingAnim 10s linear infinite;
+    }
+    input {
+        width: 300px;
+        line-height: 20px;
+    }
+    label {
+        font-size: 1.5em;
+    }
+    .selectors {
+        display: flex;
+        justify-content: space-between;
+        font-size: 3em;
+        .x-btn, .o-btn{
+            padding: 0em 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+    p {
+        font-size: 1.5em;
+    }
+    .start-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        font-size: 2em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        i {
+            animation: headingAnim 10s linear infinite;
+        }
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+.pop-up-not-active{
+    left: -100%;
+    transform: scale(0);
+}
+.active-selector {
+    color: green;
+}
 .end-game-pop-up {
   position: absolute;
   transition: all 0.5s ease;
@@ -97,9 +163,9 @@
   top: 0;
   left: 0;
   h2 {
-      font-size: 3em;
-      padding-bottom: 2em;
-      color: hotpink;
+    font-size: 3em;
+    padding-bottom: 2em;
+    color: hotpink;
   }
   .reset-btn {
     padding: 1em 2em;
@@ -110,8 +176,8 @@
     color: white;
     transition: all 0.3s ease;
     &:hover {
-        transform: scale(1.2);
-        background-color: hotpink;
+      transform: scale(1.2);
+      background-color: hotpink;
     }
   }
 }
@@ -175,19 +241,19 @@
   }
 }
 @keyframes popUp {
-    0% {
-        color: hotpink;
-    }
-    25% {
-        color: coral;
-    }
-    50% {
-        color: orange;
-    }
-    75% {
-        color: coral;
-    }
-    100% {
-        color: hotpink;
-    }
+  0% {
+    color: hotpink;
+  }
+  25% {
+    color: coral;
+  }
+  50% {
+    color: orange;
+  }
+  75% {
+    color: coral;
+  }
+  100% {
+    color: hotpink;
+  }
 }
