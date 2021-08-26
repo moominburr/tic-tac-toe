@@ -94,6 +94,13 @@
   position: relative;
 }
 
+@media screen and (max-width: 500px) {
+  .gameboard {
+    height: 350px;
+    width: 350px;
+  }
+}
+
 .gameboard .gamesquare {
   width: 500/3px;
   height: 500/3px;
@@ -112,6 +119,14 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 500px) {
+  .gameboard .gamesquare {
+    width: 350/3px;
+    height: 350/3px;
+    font-size: 2em;
+  }
+}
+
 .gameboard .gamesquare p {
   width: 3em;
   height: 3em;
@@ -126,6 +141,13 @@
           align-items: center;
   padding: 0;
   margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .gameboard .gamesquare p {
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .start-game-pop-up {
@@ -160,9 +182,16 @@
           animation: headingAnim 10s linear infinite;
 }
 
+@media screen and (max-width: 500px) {
+  .start-game-pop-up .start {
+    font-size: 2em;
+  }
+}
+
 .start-game-pop-up input {
   width: 300px;
   line-height: 20px;
+  font-family: sans-serif;
 }
 
 .start-game-pop-up label {
@@ -290,6 +319,7 @@
           flex-direction: column;
   -webkit-transform: scale(0);
           transform: scale(0);
+  text-align: center;
 }
 
 .pop-up-active {
@@ -303,6 +333,12 @@
   font-size: 3em;
   padding-bottom: 2em;
   color: hotpink;
+}
+
+@media screen and (max-width: 500px) {
+  .pop-up-active h2 {
+    font-size: 2em;
+  }
 }
 
 .pop-up-active .reset-btn {

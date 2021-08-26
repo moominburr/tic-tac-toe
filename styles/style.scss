@@ -58,6 +58,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   position: relative;
+  @media screen and (max-width: 500px){
+      height: 350px;
+      width: 350px;
+  }
   .gamesquare {
     width: 500/3px;
     height: 500/3px;
@@ -68,6 +72,11 @@
     font-size: 3em;
     font-family: "Rampart One", sans-serif;
     cursor: pointer;
+    @media screen and (max-width: 500px) {
+        width: 350/3px;
+        height: 350/3px;
+        font-size: 2em;
+    }
     p {
       width: 3em;
       height: 3em;
@@ -76,6 +85,10 @@
       align-items: center;
       padding: 0;
       margin: 0;
+      @media screen and (max-width: 500px) {
+          width: 2em;
+          height: 2em;
+      }
     }
   }
 }
@@ -96,10 +109,14 @@
         font-size: 3em;
         padding-bottom: 1em;
         animation: headingAnim 10s linear infinite;
+        @media screen and (max-width: 500px){
+            font-size: 2em;
+        }
     }
     input {
         width: 300px;
         line-height: 20px;
+        font-family: sans-serif;
     }
     label {
         font-size: 1.5em;
@@ -176,6 +193,8 @@
   align-items: center;
   flex-direction: column;
   transform: scale(0);
+  text-align: center;
+
 }
 .pop-up-active {
   transform: scale(1);
@@ -185,6 +204,9 @@
     font-size: 3em;
     padding-bottom: 2em;
     color: hotpink;
+    @media screen and (max-width: 500px){
+        font-size: 2em;
+    }
   }
   .reset-btn {
     padding: 1em 2em;
