@@ -182,8 +182,8 @@
 .start-game-pop-up .selectors .x-btn, .start-game-pop-up .selectors .o-btn {
   padding: 0em 1em;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  -webkit-transition: all 0.05s ease;
+  transition: all 0.05s ease;
 }
 
 .start-game-pop-up .selectors .x-btn:hover, .start-game-pop-up .selectors .o-btn:hover {
@@ -224,6 +224,36 @@
 .start-game-pop-up .start-btn:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+.new-game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.new-game .new-game-btn {
+  margin-top: 1em;
+  padding: 1em 1em;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: black;
+  font-size: 1.2em;
+  color: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.new-game .new-game-btn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: hotpink;
 }
 
 .pop-up-not-active {

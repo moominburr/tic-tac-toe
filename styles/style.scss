@@ -111,7 +111,7 @@
         .x-btn, .o-btn{
             padding: 0em 1em;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.05s ease;
             &:hover {
                 transform: scale(1.2);
             }
@@ -134,6 +134,25 @@
         }
         &:hover {
             transform: scale(1.2);
+        }
+    }
+}
+.new-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .new-game-btn {
+        margin-top: 1em;
+        padding: 1em 1em;
+        cursor: pointer;
+        border-radius: 15px;
+        background-color: black;
+        font-size: 1.2em;
+        color: white;
+        transition: all 0.3s ease;
+        &:hover {
+          transform: scale(1.1);
+          background-color: hotpink;
         }
     }
 }

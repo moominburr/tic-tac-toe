@@ -36,27 +36,35 @@ const player = (() => {
   const selectSign = (e) => {
     sign = e.target.textContent;
     e.target.classList.add("active-selector");
+    let children = e.target.parentNode.childNodes;
+    for (i = 0; i < children.length; i++) {
+      if (e.target === children[i]) {
+      } else if (children[i].classList.contains("active-selector")) {
+        children[i].classList.remove("active-selector");
+      }
+    }
+    console.log(sign);
   };
   signBtns.forEach((btn) => {
     btn.addEventListener("click", selectSign);
   });
   let player1 = Player(name, sign);
   const updateName = () => {
-    name = document.querySelector("#name").value;
-    if (name) {
-        player1 = Player(name, sign);
-    } 
+    name = document.querySelector("#name").value || "player";
+    player1 = Player(name, sign);
   };
+
   return { player1, updateName };
 })();
 
 const initializeGame = (() => {
+  const newGameBtn = document.querySelector(".new-game-btn");
+  const startPopUp = document.querySelector(".start-game-pop-up");
+
   const startBtn = document.querySelector(".start-btn");
   startBtn.addEventListener("click", () => {
     player.updateName();
-    const startPopUp = document.querySelector(".start-game-pop-up");
     startPopUp.classList.add("pop-up-not-active");
-    console.log(player.player1.getName());
   });
   const squares = document.querySelectorAll(".square-text");
   let iteration = 1;
@@ -64,6 +72,18 @@ const initializeGame = (() => {
   let isWinner = false;
   let winner = null;
   let isDraw = false;
+  newGameBtn.addEventListener("click", () => {
+    if (isWinner) return;
+    startPopUp.classList.remove("pop-up-not-active");
+    Gameboard.resetGamearray();
+    checkWinningConditions.resetConditions();
+    isWinner = false;
+    isDraw = false;
+    winner = null;
+    squares.forEach((square) => {
+      square.textContent = "";
+    });
+  });
   squares.forEach((square) =>
     square.addEventListener("click", (e) => {
       playRound(e, player.player1);
@@ -77,7 +97,6 @@ const initializeGame = (() => {
     }
     return num;
   };
-
   const checkWinningConditions = (() => {
     let drawCheck = [];
     let array = Gameboard.getGamearray();
@@ -214,14 +233,18 @@ const initializeGame = (() => {
     iteration = 1;
     const popUp = document.querySelector(".end-game-pop-up");
     const winningText = document.querySelector(".winning-text");
-    console.log(`Winner is ${winner}, isWinner is ${isWinner}, isDraw is ${isDraw}`);
     winningArray.forEach((el) => {
       squares[el].classList.add("winner");
     });
     if (!winner && !isDraw) {
       winningText.textContent = "No winners here! Try again.";
     } else if (winner && !isDraw) {
-      winningText.textContent = `The winner is ${winner}.`;
+      if (winner === player.player1.getSign()) {
+        let playerName = player.player1.getName();
+        winningText.textContent = `${playerName}, you are the winner!`;
+      } else {
+        winningText.textContent = `The winner is ${winner}.`;
+      }
     } else if (isDraw) {
       winningText.textContent = "A draw. Try again.";
     }
@@ -258,7 +281,6 @@ const initializeGame = (() => {
       let index = e.target.id;
       let array = Gameboard.getGamearray();
       let sign = player.getSign();
-
       if (array[index] !== "") {
         return;
       } else {
@@ -289,8 +311,11 @@ const initializeGame = (() => {
         if (isWinner) endGame();
       } else {
         let ct = compTurn();
-        Gameboard.setGameArray(ct, "O");
-        squares[ct].textContent = "O";
+        let compSign;
+        if (player.getSign() === "X") compSign = "0";
+        else compSign = "X";
+        Gameboard.setGameArray(ct, compSign);
+        squares[ct].textContent = compSign;
         iteration++;
         isDraw = checkForDraw();
         if (isDraw) endGame();
