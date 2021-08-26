@@ -26,9 +26,7 @@ const Player = (name, sign) => {
   };
   return { getName, getSign };
 };
-// Create a gameboard with event listeners that update the array with the players sign.
 
-//const playerX = Player("Kate", "X");
 const player = (() => {
   let name = document.querySelector("#name").value || "player";
   const signBtns = document.querySelectorAll(".selector");
@@ -43,7 +41,6 @@ const player = (() => {
         children[i].classList.remove("active-selector");
       }
     }
-    console.log(sign);
   };
   signBtns.forEach((btn) => {
     btn.addEventListener("click", selectSign);
@@ -53,25 +50,26 @@ const player = (() => {
     name = document.querySelector("#name").value || "player";
     player1 = Player(name, sign);
   };
-
   return { player1, updateName };
 })();
 
 const initializeGame = (() => {
   const newGameBtn = document.querySelector(".new-game-btn");
   const startPopUp = document.querySelector(".start-game-pop-up");
-
   const startBtn = document.querySelector(".start-btn");
-  startBtn.addEventListener("click", () => {
-    player.updateName();
-    startPopUp.classList.add("pop-up-not-active");
-  });
   const squares = document.querySelectorAll(".square-text");
+
   let iteration = 1;
   let winningArray = [];
   let isWinner = false;
   let winner = null;
   let isDraw = false;
+
+  startBtn.addEventListener("click", () => {
+    player.updateName();
+    startPopUp.classList.add("pop-up-not-active");
+  });
+
   newGameBtn.addEventListener("click", () => {
     if (isWinner) return;
     startPopUp.classList.remove("pop-up-not-active");
@@ -84,11 +82,13 @@ const initializeGame = (() => {
       square.textContent = "";
     });
   });
+
   squares.forEach((square) =>
     square.addEventListener("click", (e) => {
       playRound(e, player.player1);
     })
   );
+
   const compTurn = () => {
     let num = Math.floor(Math.random() * 9);
     let array = Gameboard.getGamearray();
@@ -103,7 +103,6 @@ const initializeGame = (() => {
     let i = 0;
     array.forEach((el) => {
       if (el === "") i++;
-      console.log("EMPTY ARRAY");
     });
     if (i === 8) return;
     const checkDiagonals = () => {
@@ -198,7 +197,6 @@ const initializeGame = (() => {
       let cv = checkVerticals();
       let cd = checkDiagonals();
       if (cd || cv || ch) {
-        //console.log("TRUE");
         return true;
       } else {
         return false;
@@ -206,6 +204,7 @@ const initializeGame = (() => {
     };
     return { overall, resetConditions };
   })();
+
   const checkForDraw = () => {
     let xCount = 0;
     let oCount = 0;
@@ -229,6 +228,7 @@ const initializeGame = (() => {
       return false;
     }
   };
+  
   const endGame = () => {
     iteration = 1;
     const popUp = document.querySelector(".end-game-pop-up");
