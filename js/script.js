@@ -1,16 +1,16 @@
 "use Strict";
 
 const Gameboard = (() => {
-  let gameArray = ["", "", "", "", "", "", "", "", ""];
+  let _gameArray = ["", "", "", "", "", "", "", "", ""];
   const getGamearray = function () {
-    return gameArray;
+    return _gameArray;
   };
   const resetGamearray = function () {
-    gameArray = ["", "", "", "", "", "", "", "", ""];
-    return gameArray;
+    _gameArray = ["", "", "", "", "", "", "", "", ""];
+    return _gameArray;
   };
   const setGameArray = function (index, sign) {
-    let newArray = gameArray.splice(index, 1, sign);
+    let newArray = _gameArray.splice(index, 1, sign);
   };
   return { setGameArray, getGamearray, resetGamearray };
 })();
@@ -28,11 +28,11 @@ const Player = (name, sign) => {
 };
 
 const player = (() => {
-  let name = document.querySelector("#name").value || "player";
+  let _name = document.querySelector("#name").value || "player";
   const signBtns = document.querySelectorAll(".selector");
-  let sign = "X";
+  let _sign = "X";
   const selectSign = (e) => {
-    sign = e.target.textContent;
+    _sign = e.target.textContent;
     e.target.classList.add("active-selector");
     let children = e.target.parentNode.childNodes;
     for (i = 0; i < children.length; i++) {
@@ -45,10 +45,10 @@ const player = (() => {
   signBtns.forEach((btn) => {
     btn.addEventListener("click", selectSign);
   });
-  let player1 = Player(name, sign);
+  let player1 = Player(_name, _sign);
   const updateName = () => {
-    name = document.querySelector("#name").value || "player";
-    player1 = Player(name, sign);
+    _name = document.querySelector("#name").value || "player";
+    player1 = Player(_name, _sign);
   };
   return { player1, updateName };
 })();
@@ -105,7 +105,7 @@ const initializeGame = (() => {
       if (el === "") i++;
     });
     if (i === 8) return;
-    const checkDiagonals = () => {
+    const _checkDiagonals = () => {
       let d1 = false;
       let d2 = false;
       if (array[0] === array[4] && array[8] === array[0]) {
@@ -126,7 +126,7 @@ const initializeGame = (() => {
         return false;
       }
     };
-    const checkVerticals = () => {
+    const _checkVerticals = () => {
       let v1 = false;
       let v2 = false;
       let v3 = false;
@@ -152,7 +152,7 @@ const initializeGame = (() => {
         return false;
       }
     };
-    const checkHorizontals = () => {
+    const _checkHorizontals = () => {
       let h1 = false;
       let h2 = false;
       let h3 = false;
@@ -193,9 +193,9 @@ const initializeGame = (() => {
       array = Gameboard.getGamearray();
     };
     const overall = () => {
-      let ch = checkHorizontals();
-      let cv = checkVerticals();
-      let cd = checkDiagonals();
+      let ch = _checkHorizontals();
+      let cv = _checkVerticals();
+      let cd = _checkDiagonals();
       if (cd || cv || ch) {
         return true;
       } else {
@@ -228,7 +228,7 @@ const initializeGame = (() => {
       return false;
     }
   };
-  
+
   const endGame = () => {
     iteration = 1;
     const popUp = document.querySelector(".end-game-pop-up");
@@ -241,7 +241,7 @@ const initializeGame = (() => {
     } else if (winner && !isDraw) {
       if (winner === player.player1.getSign()) {
         let playerName = player.player1.getName();
-        winningText.textContent = `${playerName}, you are the winner!`;
+        winningText.textContent = `${playerName === 'player' ? 'Player' : playerName}, you are the winner!`;
       } else {
         winningText.textContent = `The winner is ${winner}.`;
       }
